@@ -3,7 +3,7 @@ worker_processes auto;
 pid /run/nginx.pid;
 
 events {
-    worker_processes 768;
+    worker_connections 768;
 }
 
 http {
@@ -15,7 +15,7 @@ http {
     upstream apps {
         least_conn;
         # TODO
-        %{~for p in ports ~}
+        %{~ for p in ports ~}
         server ${docker_host}:${p};
         %{~ endfor ~}
     }
