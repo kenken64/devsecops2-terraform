@@ -7,8 +7,8 @@ events {
 }
 
 http {
-    access log /var/log/nginx/access.log;
-    error log /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
     
     gzip on;
 

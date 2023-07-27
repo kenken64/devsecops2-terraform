@@ -96,6 +96,7 @@ resource "digitalocean_droplet" "nginx" {
 
     provisioner "remote-exec" {
         inline  = [
+        "nginx -t",
         "systemctl restart nginx",
         "systemctl enable nginx",
       ]
