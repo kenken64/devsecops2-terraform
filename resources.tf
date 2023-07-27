@@ -20,7 +20,7 @@ resource "docker_container" "bgg-database" {
     name = "${var.app_namespace}-bgg-database"
     image = docker_image.bgg-database.image_id
 
-    network_advanced {
+    networks_advanced {
         name = docker_network.bgg-net.id
     }
 
@@ -40,7 +40,7 @@ resource "docker_container" "bgg-backend" {
     name = "${var.app_namespace}-bgg-backend-${count.index}"
     image = docker_image.bgg-backend.image_id
 
-    network_advanced {
+    networks_advanced {
         name = docker_network.bgg-net.id
     }
 
@@ -85,7 +85,6 @@ resource "digitalocean_droplet" "nginx" {
     provisioner "remote-exec" {
       inline  = [
         "apt update -y",
-        "apt upgrade -y",
         "apt install nginx -y",
       ]
     }
